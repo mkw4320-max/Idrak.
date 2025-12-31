@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wellness Supplement Finder</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; padding:20px; }
+    .container { max-width:600px; background:#fff; padding:25px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+    h1 { font-size:22px; }
+    button { margin-top:15px; padding:10px 15px; border:none; background:#2a7fff; color:#fff; border-radius:5px; cursor:pointer; }
+    .option { margin:8px 0; }
+    .result { margin-top:20px; padding:15px; background:#eef6ff; border-radius:6px; }
+    .disclaimer { font-size:12px; color:#666; margin-top:15px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Find a Supplement That Fits Your Wellness Goals</h1>
+    <p>Please answer a few quick questions to see which supplement may fit your lifestyle.</p>
+
+    <label>What is your main wellness goal?</label>
+    <div class="option"><input type="radio" name="goal" value="energy"> Energy & Stamina</div>
+    <div class="option"><input type="radio" name="goal" value="focus"> Focus & Memory</div>
+    <div class="option"><input type="radio" name="goal" value="joints"> Joint Comfort</div>
+    <div class="option"><input type="radio" name="goal" value="gut"> Digestive Health</div>
+    <div class="option"><input type="radio" name="goal" value="sleep"> Sleep & Relaxation</div>
+    <div class="option"><input type="radio" name="goal" value="stress"> Stress Balance</div>
+    <div class="option"><input type="radio" name="goal" value="beauty"> Skin, Hair & Nails</div>
+    <div class="option"><input type="radio" name="goal" value="libido"> Vitality & Libido</div>
+
+    <button onclick="showResult()">See Recommendation</button>
+
+    <div id="result" class="result" style="display:none;"></div>
+
+    <div class="disclaimer">
+      These statements have not been evaluated by the FDA. This is not intended to diagnose, treat, cure, or prevent any disease.
+    </div>
+  </div>
+
+  <script>
+    function showResult() {
+      const goal = document.querySelector('input[name="goal"]:checked');
+      if (!goal) return alert('Please select a wellness goal');
+
+      let recommendation = '';
+
+      switch(goal.value) {
+        case 'energy':
+          recommendation = '<strong>NAD+ Supplement</strong><br>Supports cellular energy and daily vitality as part of a healthy lifestyle.';
+          break;
+        case 'focus':
+          recommendation = '<strong>Cognitive & Memory Support</strong><br>Helps maintain focus, clarity, and cognitive wellness.';
+          break;
+        case 'joints':
+          recommendation = '<strong>Joint Support Formula</strong><br>Designed to support joint flexibility and everyday movement.';
+          break;
+        case 'gut':
+          recommendation = '<strong>Gut Health Formula</strong><br>Supports digestion and a balanced gut environment.';
+          break;
+        case 'sleep':
+          recommendation = '<strong>Magnesium Glycinate</strong><br>Supports relaxation and restful sleep routines.';
+          break;
+        case 'stress':
+          recommendation = '<strong>Ashwagandha</strong><br>Helps the body manage stress and maintain balance.';
+          break;
+        case 'beauty':
+          recommendation = '<strong>Beauty + Collagen Strips</strong><br>Supports healthy-looking skin, hair, and nails.';
+          break;
+        case 'libido':
+          recommendation = '<strong>Libido Support Strips</strong><br>Supports stamina and vitality as part of daily wellness.';
+          break;
+      }
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = recommendation;
+      resultDiv.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
